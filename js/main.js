@@ -77,10 +77,8 @@ function toggleFullScreen() {
     //if the player is in fullscreen exit fullscreen, otherwise make it full screen
     if(document.fullscreenElement) {
         document.exitFullscreen();
-        seeker.style.width = "45rem";
     } else {
         playerCon.requestFullscreen();
-        seeker.style.width = "70%";
     }
 
     changeIcon(fullScreen);

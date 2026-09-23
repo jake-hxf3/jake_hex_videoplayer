@@ -22,11 +22,11 @@ body, p, h1, h2, h3, h4, h5 {
 
 /* ---Utility Classes--- */
 
-.hidden {
+.no-display {
    display: none;
 }
 
-.visually-hidden:not(:focus):not(:active) {
+.hidden:not(:focus):not(:active) {
    position: absolute !important; 
    width: 1px !important; 
    height: 1px !important; 

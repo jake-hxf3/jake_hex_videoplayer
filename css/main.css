@@ -1,4 +1,8 @@
-#player-container {
+:root {
+  font-size: clamp(12px, 2vw, 18px);
+}
+
+.custom-video {
     margin-block: 1rem;
     position: relative;
     /* allow the video to expland to full screen and stack properly */
@@ -11,8 +15,8 @@
     right: 0;
     left: 0;
     bottom: 0;
-    padding: 20px;
-    background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,.5));
+    padding: 1.25rem;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,1));
     display: flex;
     transition: all 0.5s ease;
 }
@@ -30,35 +34,54 @@
 
 
 
-button {
+.video-controls button {
     padding: 0;
     border: 0;
     background-color: transparent;
 }
 
+.video-controls button:focus-visible, .video-range:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 1px;
+}
+
 .player-icon {
     color: red;
-    width: 32px;
-    height: 32px;
-    margin-left: 20px;
+    width: 2rem;
+    height: 2rem;
+    margin-left: 10px;
     cursor: pointer;
-    transition: 0.2s all linear;
+    transition: 0.2s color linear;
 }
 
 .player-icon:hover {
   color: #ff6868;
 }
 
+.stop {
+  margin-right: 1rem;
+}
+
 .volume {
-    margin-left: auto;
-    margin-right: 10px;
+  margin-left: auto;
+  display: flex;
+}
+
+.vol {
+  margin-right: 10px;
 }
 
 
-/* Generate range code */
+.videotext {
+  color: white;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 0.95rem;
+}
 
-/*********** Baseline, reset styles ***********/
-input[type="range"] {
+
+
+.video-range {
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
@@ -66,79 +89,105 @@ input[type="range"] {
 }
 
 /* Removes default focus */
-input[type="range"]:focus {
+.video-range:focus {
   outline: none;
 }
 
 /******** Chrome, Safari, Opera and Edge Chromium styles ********/
 /* slider track */
-input[type="range"]::-webkit-slider-runnable-track {
+.video-range::-webkit-slider-runnable-track {
   background-color: #187bec;
   border-radius: 0.5rem;
   height: 0.5rem;
 }
 
 /* slider thumb */
-input[type="range"]::-webkit-slider-thumb {
+.video-range::-webkit-slider-thumb {
   -webkit-appearance: none; /* Override default look */
   appearance: none;
   background-color: red;
   transition: 0.2s all linear;
 }
 
-input[type="range"]::-webkit-slider-thumb:hover {
+
+
+.video-range::-webkit-slider-thumb:hover {
   background-color: #f93f3f;
 }
 
+.video-range:focus-visible::-webkit-slider-thumb {
+  outline: 2px solid white;
+  outline-offset: 0.125rem;
+} 
+
+
+#seeking {
+  width: 100%;
+  padding-inline: 15px;  
+  display: flex;
+  align-items: center;
+}
 
 
 #change-vol {
-  width: 7rem;
+  display: none;
+  width: 0;
+  visibility: 0;
 }
 
+#volume:hover #change-vol {
+  display: block;
+  animation: expand 0.5s cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
+}
+
+
 #timeseek {
-  width: 45rem;
-  margin-left: auto;
+  width: 100%;
 }
 
 #change-vol::-webkit-slider-thumb {
-  margin-top: -6px; /* Centers thumb on the track */
+  margin-top: -4px; /* Centers thumb on the track */
   border-radius: 0.2rem;
   height: 1.25rem;
   width: 1rem;
 }
 
-#change-vol:focus::-webkit-slider-thumb {
-  outline: 2px solid #f93f3f;
-  outline-offset: 0.125rem;
-}
-
 
 #timeseek::-webkit-slider-thumb {
   border: #8fc3fe 3px solid;
-  margin-top: -8px; /* Centers thumb on the track */
+  margin-top: -6px;
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
 }
 
+#timeseek:not(:hover)::-webkit-slider-thumb {
+  border: #8fc3fe 3px solid;
+  background-color: transparent;
+}
+
 /*********** Firefox styles ***********/
 /* slider track */
-input[type="range"]::-moz-range-track {
+.video-range::-moz-range-track {
   background-color: #187bec;
   border-radius: 0.5rem;
   height: 0.5rem;
 }
 
 /* slider thumb */
-input[type="range"]::-moz-range-thumb {
+.video-range::-moz-range-thumb {
   background-color: red;
   border: none; /*Removes extra border that FF applies*/
 }
 
-input[type="range"]::-moz-range-thumb:hover {
+.video-range::-moz-range-thumb:hover {
   transition: 0.2s all linear;
   background-color: #f93f3f;
+}
+
+.video-range:focus::-moz-range-thumb{
+  outline: 2px solid white;
+  outline-offset: 0.125rem;
 }
 
 #change-vol::-moz-range-thumb {
@@ -147,14 +196,58 @@ input[type="range"]::-moz-range-thumb:hover {
   width: 1rem;
 }
 
-#change-vol:focus::-moz-range-thumb{
-  outline: 2px solid #f93f3f;
-  outline-offset: 0.125rem;
-}
-
 #timeseek::-moz-range-thumb {
   border: #8fc3fe 3px solid;
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+#timeseek:not(:hover)::-moz-range-thumb {
+  border: #8fc3fe 3px solid;
+  background-color: transparent;
+}
+
+
+@keyframes expand {
+  0% {width: 0;}
+  75% {width: 7rem;}
+  100% {width: 7rem;}
+}
+
+@media screen and (min-width: 768px) {
+.player-icon{
+  margin-left: 1.25rem;
+}
+
+
+#change-vol::-webkit-slider-thumb {
+  margin-top: -0.325rem;
+}
+
+#timeseek::-webkit-slider-thumb {
+  margin-top: -0.5rem;
+}
+}
+
+@media screen and (max-width: 340px) {
+  .video-range {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 240px) {
+  .play, .stop {
+    display: none;
+  }
+}
+
+@media (pointer:none), (pointer:coarse) {
+  #change-vol {
+    display: none;
+  }
+  
+  #full-screen {
+    display: none;
+  }
 }

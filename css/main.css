@@ -2,7 +2,7 @@
   font-size: clamp(12px, 2vw, 18px);
 }
 
-#player-container {
+.custom-video {
     margin-block: 1rem;
     position: relative;
     /* allow the video to expland to full screen and stack properly */
@@ -142,10 +142,6 @@
 
 
 #timeseek {
-  width: 100%;
-}
-
-#video-controls:fullscreen #timeseek {
   width: 100%;
 }
 

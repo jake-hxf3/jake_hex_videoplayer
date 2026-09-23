@@ -61,9 +61,10 @@ function playVideo() {
 }
 
 function stopVideo() {
-    if(player.paused) return;
-    player.pause();
-    changeIcon(playButton);
+    if(!player.paused) {
+        player.pause();
+        changeIcon(playButton);
+    }
     seeker.value = 0;
     player.currentTime = 1;
 }

@@ -34,13 +34,13 @@
 
 
 
-button {
+.video-controls button {
     padding: 0;
     border: 0;
     background-color: transparent;
 }
 
-button:focus-visible, input:focus-visible {
+.video-controls button:focus-visible, .video-range:focus-visible {
   outline: 2px solid white;
   outline-offset: 1px;
 }
@@ -51,7 +51,7 @@ button:focus-visible, input:focus-visible {
     height: 2rem;
     margin-left: 10px;
     cursor: pointer;
-    transition: 0.2s all linear;
+    transition: 0.2s color linear;
 }
 
 .player-icon:hover {
@@ -59,12 +59,24 @@ button:focus-visible, input:focus-visible {
 }
 
 .stop {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 
 .volume {
-    margin-left: auto;
-    margin-right: 10px;
+  margin-left: auto;
+  display: flex;
+}
+
+.vol {
+  margin-right: 10px;
+}
+
+
+.videotext {
+  color: white;
+  font-size: 1rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-right: 0.95rem;
 }
 
 
@@ -97,25 +109,40 @@ button:focus-visible, input:focus-visible {
   transition: 0.2s all linear;
 }
 
+
+
 .video-range::-webkit-slider-thumb:hover {
   background-color: #f93f3f;
 }
 
-.video-range:focus::-webkit-slider-thumb {
+.video-range:focus-visible::-webkit-slider-thumb {
   outline: 2px solid white;
   outline-offset: 0.125rem;
 } 
 
 
-
-#change-vol {
-  width: 7rem;
+#seeking {
+  width: 100%;
+  padding-inline: 15px;  
+  display: flex;
+  align-items: center;
 }
 
+
+#change-vol {
+  display: none;
+  width: 0;
+  visibility: 0;
+}
+
+#volume:hover #change-vol {
+  display: block;
+  animation: expand 0.5s cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
+}
+
+
 #timeseek {
-  width: 25rem;
-  padding-inline: 15px;
-  margin-left: auto;
+  width: 100%;
 }
 
 #video-controls:fullscreen #timeseek {
@@ -136,6 +163,11 @@ button:focus-visible, input:focus-visible {
   border-radius: 50%;
   height: 1.5rem;
   width: 1.5rem;
+}
+
+#timeseek:not(:hover)::-webkit-slider-thumb {
+  border: #8fc3fe 3px solid;
+  background-color: transparent;
 }
 
 /*********** Firefox styles ***********/
@@ -175,13 +207,21 @@ button:focus-visible, input:focus-visible {
   width: 1.5rem;
 }
 
+#timeseek:not(:hover)::-moz-range-thumb {
+  border: #8fc3fe 3px solid;
+  background-color: transparent;
+}
+
+
+@keyframes expand {
+  0% {width: 0;}
+  75% {width: 7rem;}
+  100% {width: 7rem;}
+}
+
 @media screen and (min-width: 768px) {
 .player-icon{
   margin-left: 1.25rem;
-}
-
-#timeseek {
-  width: 100%;
 }
 
 
@@ -208,6 +248,10 @@ button:focus-visible, input:focus-visible {
 
 @media (pointer:none), (pointer:coarse) {
   #change-vol {
+    display: none;
+  }
+  
+  #full-screen {
     display: none;
   }
 }

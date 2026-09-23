@@ -1,1 +1,160 @@
+#player-container {
+    margin-block: 1rem;
+    position: relative;
+    /* allow the video to expland to full screen and stack properly */
+    display: flex;
+    flex-direction: column;
+}
 
+.video-controls {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,.5));
+    display: flex;
+    transition: all 0.5s ease;
+}
+
+.video-controls.hide {
+  animation: stay 3s cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
+  pointer-events: none;
+}
+
+@keyframes stay {
+  0% {opacity: 1;}
+  75% {opacity: 1;}
+  100% {opacity: 0;}
+}
+
+
+
+button {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+.player-icon {
+    color: red;
+    width: 32px;
+    height: 32px;
+    margin-left: 20px;
+    cursor: pointer;
+    transition: 0.2s all linear;
+}
+
+.player-icon:hover {
+  color: #ff6868;
+}
+
+.volume {
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+
+/* Generate range code */
+
+/*********** Baseline, reset styles ***********/
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* Removes default focus */
+input[type="range"]:focus {
+  outline: none;
+}
+
+/******** Chrome, Safari, Opera and Edge Chromium styles ********/
+/* slider track */
+input[type="range"]::-webkit-slider-runnable-track {
+  background-color: #187bec;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  background-color: red;
+  transition: 0.2s all linear;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: #f93f3f;
+}
+
+
+
+#change-vol {
+  width: 7rem;
+}
+
+#timeseek {
+  width: 45rem;
+  margin-left: auto;
+}
+
+#change-vol::-webkit-slider-thumb {
+  margin-top: -6px; /* Centers thumb on the track */
+  border-radius: 0.2rem;
+  height: 1.25rem;
+  width: 1rem;
+}
+
+#change-vol:focus::-webkit-slider-thumb {
+  outline: 2px solid #f93f3f;
+  outline-offset: 0.125rem;
+}
+
+
+#timeseek::-webkit-slider-thumb {
+  border: #8fc3fe 3px solid;
+  margin-top: -8px; /* Centers thumb on the track */
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+/*********** Firefox styles ***********/
+/* slider track */
+input[type="range"]::-moz-range-track {
+  background-color: #187bec;
+  border-radius: 0.5rem;
+  height: 0.5rem;
+}
+
+/* slider thumb */
+input[type="range"]::-moz-range-thumb {
+  background-color: red;
+  border: none; /*Removes extra border that FF applies*/
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+  transition: 0.2s all linear;
+  background-color: #f93f3f;
+}
+
+#change-vol::-moz-range-thumb {
+  border-radius: 0.2rem;
+  height: 1.25rem;
+  width: 1rem;
+}
+
+#change-vol:focus::-moz-range-thumb{
+  outline: 2px solid #f93f3f;
+  outline-offset: 0.125rem;
+}
+
+#timeseek::-moz-range-thumb {
+  border: #8fc3fe 3px solid;
+  border-radius: 50%;
+  height: 1.5rem;
+  width: 1.5rem;
+}

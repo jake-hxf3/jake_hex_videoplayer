@@ -1,4 +1,4 @@
-# Project Name
+# Custom HTML5 Video Player
 ![insert alt text](images/example.jpg)
 
 This is a project about [insert topic].

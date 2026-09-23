@@ -121,7 +121,7 @@
 } 
 
 
-#seeking {
+.seeking {
   width: 100%;
   padding-inline: 15px;  
   display: flex;
@@ -230,8 +230,8 @@
 }
 }
 
-@media screen and (max-width: 340px) {
-  .video-range {
+@media screen and (max-width: 380px) {
+  .video-range, .seeking, .caption {
     display: none;
   }
 }

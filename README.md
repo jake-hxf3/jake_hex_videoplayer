@@ -1,7 +1,7 @@
 # Custom HTML5 Video Player
-![insert alt text](images/example.jpg)
+![insert alt text](images/placeholder.jpg)
 
-This is a project about [insert topic].
+This is a project about making a custom video player.
 
 ## Installation 💻
 No installation required, simply download the zip file and extract.

@@ -10,6 +10,10 @@
     flex-direction: column;
 }
 
+.custom-video video::cue {
+  background-color: red;
+}
+
 .video-controls {
     position: absolute;
     right: 0;
@@ -59,6 +63,7 @@
 }
 
 .stop {
+  display: none;
   margin-right: 1rem;
 }
 
@@ -67,7 +72,7 @@
   display: flex;
 }
 
-.vol {
+.volume:hover .vol {
   margin-right: 10px;
 }
 
@@ -135,9 +140,9 @@
   visibility: 0;
 }
 
-#volume:hover #change-vol {
+.volume:hover #change-vol {
   display: block;
-  animation: expand 0.5s cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
+  animation: expand 0.5s 0.2s cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
 }
 
 
@@ -220,6 +225,9 @@
   margin-left: 1.25rem;
 }
 
+.stop {
+  display: block;
+}
 
 #change-vol::-webkit-slider-thumb {
   margin-top: -0.325rem;
@@ -231,23 +239,24 @@
 }
 
 @media screen and (max-width: 380px) {
-  .video-range, .seeking, .caption {
+  .video-range,.caption {
     display: none;
+  }
+
+  .video-controls {
+    padding-block: 0.25rem;
+    padding-left: 0.25rem;
   }
 }
 
 @media screen and (max-width: 240px) {
-  .play, .stop {
+  .video-controls {
     display: none;
   }
 }
 
 @media (pointer:none), (pointer:coarse) {
   #change-vol {
-    display: none;
-  }
-  
-  #full-screen {
     display: none;
   }
 }

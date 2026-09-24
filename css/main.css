@@ -20,7 +20,7 @@
     right: 0;
     left: 0;
     bottom: 0;
-    padding: 0.25rem 1rem;
+    padding: 0.25rem 1rem 0.5rem;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,1));
     display: none;
     transition: all 0.5s ease;
@@ -42,15 +42,10 @@
 .video-controls button {
     padding: 0;
     border: 0;
-    display: grid;
     background-color: transparent;
 
     +button {
       margin-left: 10px;
-    }
-
-    svg {
-      grid-area: 1/-1;
     }
 }
 
@@ -284,5 +279,9 @@
 @media (pointer:none), (pointer:coarse) {
   #change-vol {
     display: none;
+  }
+
+  .video-controls button:focus-visible{
+    outline: none;
   }
 }

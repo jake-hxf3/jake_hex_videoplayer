@@ -116,8 +116,12 @@ function toggleFullScreen() {
     //if the player is in fullscreen exit fullscreen, otherwise make it full screen
     if(document.fullscreenElement) {
         document.exitFullscreen();
+        playerCon.classList.remove("landscape");
     } else {
         playerCon.requestFullscreen();
+        if((isMobile()) && (screen.orientation.type === "portrait-primary")) {
+            playerCon.classList.add("landscape");
+        }
     }
 
     changeIcon(fullScreen);

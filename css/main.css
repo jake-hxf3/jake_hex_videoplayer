@@ -19,9 +19,9 @@
     right: 0;
     left: 0;
     bottom: 0;
-    padding: 1.25rem;
+    padding: 0.25rem 0 0.25rem 0.25rem;
     background-image: linear-gradient(to bottom, rgba(0,0,0,0.2), rgba(0,0,0,1));
-    display: flex;
+    display: none;
     transition: all 0.5s ease;
 }
 
@@ -76,6 +76,10 @@
   margin-right: 10px;
 }
 
+.caption {
+  display: none;
+}
+
 
 .videotext {
   color: white;
@@ -87,6 +91,7 @@
 
 
 .video-range {
+  display: none;
   -webkit-appearance: none;
   appearance: none;
   background: transparent;
@@ -140,15 +145,13 @@
   visibility: 0;
 }
 
-.volume:hover #change-vol {
-  display: block;
-  animation: expand 0.5s 0.2s cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
-}
-
 
 #timeseek {
   width: 100%;
 }
+ .seeking:has(+.volume:hover) #timeseek {
+    display: none;
+  }
 
 #change-vol::-webkit-slider-thumb {
   margin-top: -4px; /* Centers thumb on the track */
@@ -236,22 +239,35 @@
 #timeseek::-webkit-slider-thumb {
   margin-top: -0.5rem;
 }
+
+.seeking:has(+.volume:hover) #timeseek {
+  display: unset;
+}
 }
 
-@media screen and (max-width: 380px) {
-  .video-range,.caption {
-    display: none;
+@media screen and (min-width: 380px) {
+  .video-controls {
+    padding: 1.25rem;
   }
 
-  .video-controls {
-    padding-block: 0.25rem;
-    padding-left: 0.25rem;
+  .volume:hover #change-vol {
+    display: block;
+    animation: expand 0.5s 0.1s cubic-bezier(0.38, 0.97, 0.56, 0.76) forwards;
+  }
+
+  .video-range {
+    display: inline-block;
+  }
+
+  .caption {
+    display: block;
   }
 }
 
-@media screen and (max-width: 240px) {
+
+@media screen and (min-width: 240px) {
   .video-controls {
-    display: none;
+    display: flex;
   }
 }
 

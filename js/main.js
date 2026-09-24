@@ -46,10 +46,13 @@ function disp(time) {
 }
 
 function changeIcon(elem, state=true) {
-    if(state){
-        elem.firstElementChild.classList.toggle("hidden");
-        elem.lastElementChild.classList.toggle("hidden");        
-    }
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+        if(state){
+            elem.firstElementChild.classList.toggle("hidden");
+            elem.lastElementChild.classList.toggle("hidden");        
+        }
+    }, 100);
 }
 
 function playVideo() {
@@ -174,8 +177,6 @@ function update() {
     if(!mouseOverControls){
         hideControls();
     }
-
-    console.log(player.textTracks[0].mode);
 }
 
 setInterval(update,1000);

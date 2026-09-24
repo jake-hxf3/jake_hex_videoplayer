@@ -47,12 +47,10 @@ function disp(time) {
 
 function changeIcon(elem, state=true) {
     clearTimeout(timer);
-    timer = setTimeout(() => {
-        if(state){
-            elem.firstElementChild.classList.toggle("hidden");
-            elem.lastElementChild.classList.toggle("hidden");        
-        }
-    }, 100);
+    if(state){
+        elem.firstElementChild.classList.toggle("hidden");
+        elem.lastElementChild.classList.toggle("hidden");        
+    }
 }
 
 function playVideo() {

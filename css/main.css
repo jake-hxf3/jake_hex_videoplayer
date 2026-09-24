@@ -42,10 +42,15 @@
 .video-controls button {
     padding: 0;
     border: 0;
+    position: grid;
     background-color: transparent;
 
     +button {
       margin-left: 10px;
+    }
+
+    svg {
+      grid-area: 1/-1;
     }
 }
 

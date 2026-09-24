@@ -47,8 +47,8 @@ function disp(time) {
 
 function changeIcon(elem, state=true) {
     if(state){
-        elem.firstElementChild.classList.toggle("hidden");
-        elem.lastElementChild.classList.toggle("hidden");        
+        elem.firstElementChild.classList.toggle("no-display");
+        elem.lastElementChild.classList.toggle("no-display");        
     }
 }
 

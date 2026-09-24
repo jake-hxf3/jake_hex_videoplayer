@@ -46,7 +46,6 @@ function disp(time) {
 }
 
 function changeIcon(elem, state=true) {
-    clearTimeout(timer);
     if(state){
         elem.firstElementChild.classList.toggle("hidden");
         elem.lastElementChild.classList.toggle("hidden");        

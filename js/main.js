@@ -119,7 +119,7 @@ function toggleFullScreen() {
         playerCon.classList.remove("landscape");
     } else {
         playerCon.requestFullscreen();
-        if((isMobile()) && (screen.orientation.type === "portrait-primary")) {
+        if(screen.orientation.type === "portrait-primary") {
             playerCon.classList.add("landscape");
         }
     }

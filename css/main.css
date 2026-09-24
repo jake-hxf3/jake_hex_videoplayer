@@ -277,10 +277,6 @@
 }
 
 @media (pointer:none), (pointer:coarse) {
-  #change-vol {
-    display: none !important;
-  }
-
   .video-controls button:focus-visible{
     outline: none;
   }
